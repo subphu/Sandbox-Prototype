@@ -11,7 +11,7 @@ import MetalKit
 // Our macOS specific view controller
 class GameViewController: NSViewController {
 
-    var renderer: Renderer!
+    var sandbox: Sandbox!
     var mtkView: MTKView!
 
     override func viewDidLoad() {
@@ -21,24 +21,23 @@ class GameViewController: NSViewController {
             print("View attached to GameViewController is not an MTKView")
             return
         }
-
-        // Select the device to render with.  We choose the default device
-        guard let defaultDevice = MTLCreateSystemDefaultDevice() else {
-            print("Metal is not supported on this device")
-            return
-        }
-
-        mtkView.device = defaultDevice
-
-        guard let newRenderer = Renderer(metalKitView: mtkView) else {
-            print("Renderer cannot be initialized")
-            return
-        }
-
-        renderer = newRenderer
-
-        renderer.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
-
-        mtkView.delegate = renderer
+        
+        sandbox = Sandbox(mtkView: mtkView)
+        sandbox.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
+        mtkView.delegate = sandbox
+        
+        view.window?.makeFirstResponder(self)
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        sandbox.tap(at: event.locationInWindow)
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        sandbox.move(to: event.locationInWindow)
+    }
+    
+    override func scrollWheel(with event: NSEvent) {
+        sandbox.zoom(delta: Float(event.scrollingDeltaY))
     }
 }

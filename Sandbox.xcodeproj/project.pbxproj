@@ -16,8 +16,40 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				Renderer.swift,
-				Shaders.metal,
+				Renderer/Core/Commander.swift,
+				Renderer/Core/FrameInfo.swift,
+				Renderer/Core/Pipeline.swift,
+				Renderer/Core/RenderContext.swift,
+				Renderer/Core/RenderPass.swift,
+				Renderer/Core/Scene.swift,
+				Renderer/Core/SceneLayer.swift,
+				Renderer/Object/Buffer.swift,
+				Renderer/Object/Camera.swift,
+				Renderer/Object/Lights.swift,
+				Renderer/Object/Material.swift,
+				Renderer/Object/Mesh.swift,
+				Renderer/Object/Shader.swift,
+				Renderer/Object/Texture.swift,
+				Renderer/Render.swift,
+				Renderer/Renderer.swift,
+				Renderer/RenderPass/ClearPass.swift,
+				Renderer/RenderPass/DisplayPass.swift,
+				Renderer/RenderPass/GBufferPass.swift,
+				Renderer/RenderPass/LightingPass.swift,
+				Renderer/RenderPass/PostProcessPass.swift,
+				Renderer/RenderPass/UIPass.swift,
+				Renderer/Utils.swift,
+				Sandbox.swift,
+				Scenes/MainScene.swift,
+				Shaders/Common.metal,
+				Shaders/Fullscreen.metal,
+				Shaders/GBuffer.metal,
+				Shaders/Library/Constants.metal,
+				Shaders/Library/Data.metal,
+				Shaders/Library/Material.metal,
+				Shaders/Library/Utils.metal,
+				Shaders/PBR.metal,
+				Shaders/UI.metal,
 			);
 			target = 26E3793C2E4E291600D0862D /* Sandbox iOS */;
 		};
@@ -25,38 +57,51 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				Renderer.swift,
-				Shaders.metal,
+				Renderer/Core/Commander.swift,
+				Renderer/Core/FrameInfo.swift,
+				Renderer/Core/Pipeline.swift,
+				Renderer/Core/RenderContext.swift,
+				Renderer/Core/RenderPass.swift,
+				Renderer/Core/Scene.swift,
+				Renderer/Core/SceneLayer.swift,
+				Renderer/Object/Buffer.swift,
+				Renderer/Object/Camera.swift,
+				Renderer/Object/Lights.swift,
+				Renderer/Object/Material.swift,
+				Renderer/Object/Mesh.swift,
+				Renderer/Object/Shader.swift,
+				Renderer/Object/Texture.swift,
+				Renderer/Render.swift,
+				Renderer/Renderer.swift,
+				Renderer/RenderPass/ClearPass.swift,
+				Renderer/RenderPass/DisplayPass.swift,
+				Renderer/RenderPass/GBufferPass.swift,
+				Renderer/RenderPass/LightingPass.swift,
+				Renderer/RenderPass/PostProcessPass.swift,
+				Renderer/RenderPass/UIPass.swift,
+				Renderer/Utils.swift,
+				Sandbox.swift,
+				Scenes/MainScene.swift,
+				Shaders/Common.metal,
+				Shaders/Fullscreen.metal,
+				Shaders/GBuffer.metal,
+				Shaders/Library/Constants.metal,
+				Shaders/Library/Data.metal,
+				Shaders/Library/Material.metal,
+				Shaders/Library/Utils.metal,
+				Shaders/PBR.metal,
+				Shaders/UI.metal,
 			);
 			target = 26E3794D2E4E291600D0862D /* Sandbox macOS */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		26E379642E4E291600D0862D /* Exceptions for "Sandbox Shared" folder in "Copy Bundle Resources" phase from "Sandbox iOS" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 26E3793B2E4E291600D0862D /* Resources */;
-			membershipExceptions = (
-				ShaderTypes.h,
-			);
-		};
-		26E379692E4E291600D0862D /* Exceptions for "Sandbox Shared" folder in "Copy Bundle Resources" phase from "Sandbox macOS" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 26E3794C2E4E291600D0862D /* Resources */;
-			membershipExceptions = (
-				ShaderTypes.h,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		26E379342E4E291500D0862D /* Sandbox Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				26E379602E4E291600D0862D /* Exceptions for "Sandbox Shared" folder in "Sandbox iOS" target */,
-				26E379642E4E291600D0862D /* Exceptions for "Sandbox Shared" folder in "Copy Bundle Resources" phase from "Sandbox iOS" target */,
 				26E379652E4E291600D0862D /* Exceptions for "Sandbox Shared" folder in "Sandbox macOS" target */,
-				26E379692E4E291600D0862D /* Exceptions for "Sandbox Shared" folder in "Copy Bundle Resources" phase from "Sandbox macOS" target */,
 			);
 			path = "Sandbox Shared";
 			sourceTree = "<group>";
@@ -255,7 +300,7 @@
 				PRODUCT_NAME = Sandbox;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/ShaderTypes.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/Shaders/ShaderTypes.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,7 +331,7 @@
 				PRODUCT_NAME = Sandbox;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/ShaderTypes.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/Shaders/ShaderTypes.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -319,7 +364,7 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/ShaderTypes.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/Shaders/ShaderTypes.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -350,7 +395,7 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/ShaderTypes.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sandbox Shared/Shaders/ShaderTypes.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
